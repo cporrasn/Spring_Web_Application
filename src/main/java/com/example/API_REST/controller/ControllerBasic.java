@@ -23,23 +23,7 @@ public class ControllerBasic {
     @GetMapping
     public String obtenerUsuarios(Model model){
         model.addAttribute("obtenerUsers",servicio.obtenerusuarios());
-        superDigit("148",3);
         return "index";
-    }
-
-    public static int superDigit(String n, int k) {
-        // Write your code here
-        if(k==1){
-            return Integer.valueOf(n);
-        }else{
-            int sum=0;
-            for(int i=0;i<k;i++){
-                String h=String.valueOf(n.charAt(i));
-                sum+=Integer.valueOf(h);
-            }
-            k=String.valueOf(sum).length();
-            return superDigit(String.valueOf(sum), k);
-        }
     }
 
     @GetMapping("/form")
@@ -62,16 +46,18 @@ public class ControllerBasic {
         //return "index";
     }
 
+    @GetMapping("/query")
+    public ArrayList<UsuarioModel> obtenerUsuariosByNombre(@RequestParam("nombre") String nombre){
+        return servicio.obtenerPorPrioridad(nombre);
+    }
+
 
     /*@GetMapping(path="/{id}")
     public Optional<UsuarioModel> obtenerUsuariosByID(@PathVariable("id") Integer id){
         return servicio.obtenerPorID(id);
     }
 
-    @GetMapping("/query")
-    public ArrayList<UsuarioModel> obtenerUsuariosByNombre(@RequestParam("nombre") String nombre){
-        return servicio.obtenerPorPrioridad(nombre);
-    }
+
 
 
 
