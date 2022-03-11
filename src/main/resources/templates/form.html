@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- JavaScript Bundle with Popper -->
+    <meta charset="UTF-8"/>
+    <title>Curso de Spring Boot</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"href="../static/css/bootstrap.css" >
+    <script th:href="@{/js/jquery-3.6.0.js}" src="../static/js/jquery-3.6.0.js"></script>
+    <script th:href="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Spring Boot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/inicio}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Galeria</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">POST</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+
+<div class="container">
+    <form th:action="@{addNewUser}" method="post" th:object="${user}">
+        <div class="form-group" >
+            <label for="id" type="hidden">Id</label>
+            <input th:field="*{id}" type="hidden" class="form-control" id="id" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="id">Nombre</label>
+            <input th:field="*{nombre}" th:value="*{nombre}" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="id">Apellidos</label>
+            <input th:field="*{apellido}" th:value="*{apellido}" type="text" class="form-control" id="apellidos" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="id">Email address</label>
+            <input th:field="*{email}" th:value="*{email}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="id">Usuario</label>
+            <input th:field="*{user}" th:value="*{user}" type="text" class="form-control" id="usuario" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="id">Password</label>
+            <input th:field="*{pass}" th:value="*{pass}" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
